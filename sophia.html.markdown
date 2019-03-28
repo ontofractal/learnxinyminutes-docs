@@ -52,36 +52,22 @@ contract SimpleContract =
   public function hello_world () = "Hello World"
 
 // hello_world function takes no arguments and returns a string (an array of bytes)
-  
+// public keyword allows the hello_world function to be called from outside the contract
+
+// Blocks
+
+// Sophia blocks use indentation, similar to Python. 
+// A block with more than one element must start on a new line, and be indented further than the block which encloses it.
+// Blocks with only a single element can be written on the same line as the previous statement.
+// Each element of the block must share the same indentation, and no part may be less indented than the indentation of the block.
+
+contract Blocks =
+  function foo() = 0
+  function bar() =    
+    let x = foo()     
+    x
+      + 1              
+
 ```
-
-
-
-
-
-### Types
-
-Sophia types form [repo docs](https://github.com/aeternity/protocol/blob/master/contracts/sophia.md#types)
-
-| Type       | Description                     | Example
-| ---------- | ------------------------------- | -------:
-| int        | A 256 bit integer  | ```-1```
-| address    | A 256 bit number in a hex representation | ```ff00```
-| bool       | A Boolean                       | ```true```
-| bits       | A bit field (with 256 bits)     | ```Bits.none```
-| string     | An array of bytes               | ```"Foo"```
-| list       | A homogeneous immutable singly linked list. | ```[1, 2, 3]```
-| tuple      | An ordered heterogeneous array   | ```(42, "Foo", true)```
-| record     | An immutable key value store with fixed key names and typed values | ``` record balance = { owner: address, value: int } ```
-| map        | An immutable key value store with dynamic mapping of keys of one type to values of one type | ```type accounts = map(string, address)```
-| option('a) | An optional value either None or Some('a) | ```Some(42)```
-| state        | A record of blockstate key, value pairs  |
-| transactions | An append only list of blockchain transactions |
-| events       | An append only list of blockchain events (or log entries) |
-| signature    | A signature - 64 bytes |
-| Chain.ttl    | Time-to-live (fixed height or relative to current block) | ```FixedTTL(1050)``` ```RelativeTTL(50)```
-| oracle('a, 'b)       | And oracle answering questions of type 'a with answers of type 'b |  ```Oracle.register(acct, qfee, ttl)```
-| oracle_query('a, 'b) | A specific oracle query |  ```Oracle.query(o, q, qfee, qttl, rttl)```
-
 
 
