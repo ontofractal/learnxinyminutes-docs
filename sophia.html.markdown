@@ -44,5 +44,44 @@ Just like with processes and GenServers in Erlang/Elixir, contracts in Sophia ha
 - Functions modifying the state need to be annotated with the `stateful` keyword.
 
 
+```ocaml
+
+// minimal contract implementation
+
+contract SimpleContract =
+  public function hello_world () = "Hello World"
+
+// hello_world function takes no arguments and returns a string (an array of bytes)
+  
+```
+
+
+
+
+
+### Types
+
+Sophia types form [repo docs](https://github.com/aeternity/protocol/blob/master/contracts/sophia.md#types)
+
+| Type       | Description                     | Example
+| ---------- | ------------------------------- | -------:
+| int        | A 256 bit integer  | ```-1```
+| address    | A 256 bit number in a hex representation | ```ff00```
+| bool       | A Boolean                       | ```true```
+| bits       | A bit field (with 256 bits)     | ```Bits.none```
+| string     | An array of bytes               | ```"Foo"```
+| list       | A homogeneous immutable singly linked list. | ```[1, 2, 3]```
+| tuple      | An ordered heterogeneous array   | ```(42, "Foo", true)```
+| record     | An immutable key value store with fixed key names and typed values | ``` record balance = { owner: address, value: int } ```
+| map        | An immutable key value store with dynamic mapping of keys of one type to values of one type | ```type accounts = map(string, address)```
+| option('a) | An optional value either None or Some('a) | ```Some(42)```
+| state        | A record of blockstate key, value pairs  |
+| transactions | An append only list of blockchain transactions |
+| events       | An append only list of blockchain events (or log entries) |
+| signature    | A signature - 64 bytes |
+| Chain.ttl    | Time-to-live (fixed height or relative to current block) | ```FixedTTL(1050)``` ```RelativeTTL(50)```
+| oracle('a, 'b)       | And oracle answering questions of type 'a with answers of type 'b |  ```Oracle.register(acct, qfee, ttl)```
+| oracle_query('a, 'b) | A specific oracle query |  ```Oracle.query(o, q, qfee, qttl, rttl)```
+
 
 
