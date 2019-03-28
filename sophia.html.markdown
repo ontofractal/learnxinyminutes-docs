@@ -68,6 +68,17 @@ contract Blocks =
     x
       + 1              
 
+
+// Bindings
+// A let keyword binds a value to a named variable. 
+
+let token = "AeternalToken"
+let price = 42
+
+let message = "Hello" // "Hello" value is assigned to the message binding
+let message = "Bye" // New value "Bye" is assigned to the message binding
+message = "Hola" // Error
+
 ```
 
 
